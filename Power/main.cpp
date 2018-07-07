@@ -7,7 +7,7 @@
 bool Equal(double lhs, double rhs)
 {
 	bool ret = false;
-	if ((lhs - rhs > -PRECISION) || (lhs - rhs < PRECISION))
+	if ((lhs - rhs > -PRECISION) && (lhs - rhs < PRECISION))
 		ret = true;
 
 	return ret;
@@ -25,7 +25,7 @@ double PowerWithUnsignedExpon(double base, int absExponent)
 	res *= res;
 
 	if (absExponent & 1)
-		res *= res;
+		res *= base;
 
 	return res;
 }
@@ -39,7 +39,7 @@ double Power(double base, int exponent)
 
 	unsigned int absExponent = (unsigned)exponent;
 	if (exponent < 0)
-		absExponent = (unsigned)(-exponent);
+		absExponent = (-exponent);
 
 	double res = PowerWithUnsignedExpon(base, absExponent);
 
@@ -51,5 +51,6 @@ double Power(double base, int exponent)
 
 int main()
 {
-	
+	Power(2, -3);
+	return 0;
 }
